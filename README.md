@@ -12,7 +12,7 @@ Do not upload only the ZIP itself. Files must be extracted in the repository.
 
 ## Controls
 
-- Sweetspot resets to the exact position and viewing angle of `GiantPortalCam` from the supplied Blender file, including its 1.50 m height. Default FOV is 50 degrees; the selected FOV is retained when using Sweetspot. Height and FOV remain adjustable.
+- Front resets to the exact position and viewing angle of `GiantPortalCam` from the supplied Blender file, including its 1.50 m height. Default FOV is 50 degrees; the selected FOV is retained when using Front. Height and FOV remain adjustable.
 - Desktop: drag to look, WASD or arrow keys to walk, wheel to move forward/backward, right-drag or Shift-drag to move. Front clearance extends to 35 m on the world Z axis.
 - Mobile: drag the left joystick to walk; drag elsewhere to look. Motion View appears on touch devices only and requests sensor permission when needed. Touch look remains available while motion is on. Motion requires HTTPS and a supported phone/browser.
 - Content expands to show five independent video/image inputs: Back, Left, Right, Ceiling, and Ceiling Front. Local replacements stay in your browser; they are not uploaded to a server.
