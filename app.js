@@ -13,8 +13,8 @@ scene.add(new THREE.HemisphereLight(0xffffff,0x666666,2));const light=new THREE.
 const ground=new THREE.GridHelper(80,160,0x444444,0x444444);ground.position.set(0,-.025,-.25);scene.add(ground);
 // GiantPortalCam from the supplied Blender file, converted from Z-up to Y-up.
 // Position and rotation are exact source values; the FOV remains adjustable.
-const sourceCameraPosition=[-7.393238377062517e-8,1.5,13.040109634399414];
-const sourceCameraPitch=1.6109389066696167-Math.PI/2;
+const sourceCameraPosition=[-7.393238377062517e-8,1.600000023841858,13.040109634399414];
+const sourceCameraPitch=1.637118935585022-Math.PI/2;
 function sweetspot(){const [x,y,z]=sourceCameraPosition;controls.setView(sourceCameraPosition,[x,y+Math.sin(sourceCameraPitch),z-Math.cos(sourceCameraPitch)]);$('camera-height').value=y;$('camera-height-value').value=y.toFixed(2)+' m';}
 document.querySelector('[data-view="sweetspot"]').onclick=sweetspot;sweetspot();
 let playing=true,time=0,scrubbing=false,lastSync=0;
@@ -40,7 +40,7 @@ async function load(c,source,label,isImage=false,isLocal=false){
  }catch(error){video?.pause();if(video){video.removeAttribute('src');video.load();}texture?.dispose();if(isLocal)URL.revokeObjectURL(url);if(version===c.version)status(c.label+': '+error.message);}
 }
 channels.forEach(c=>{$('file-'+c.id).onchange=e=>{const file=e.target.files[0];if(!file)return;if(!/^(video|image)\//.test(file.type)){status('Select an MP4, WebM, PNG or JPG.');return;}status('');load(c,file,file.name,file.type.startsWith('image/'),true);};});
-async function defaults(){status('Loading five screens…');await Promise.all(channels.map(c=>load(c,'./assets/'+c.id+'.mp4',c.label+' · default')));if(channels.every(c=>c.texture))status('');}
+async function defaults(){status('Loading five screens…');await Promise.all(channels.map(c=>load(c,'./assets/'+c.id+'.png',c.label+' · default',true)));if(channels.every(c=>c.texture))status('');}
 $('default').onclick=()=>{seekTo(0);defaults();};
 $('grid').onclick=()=>{pause();channels.forEach(c=>{c.version++;dispose(c);c.video=null;c.url=null;const canvas=document.createElement('canvas');canvas.width=canvas.height=1024;const ctx=canvas.getContext('2d');for(let y=0;y<8;y++)for(let x=0;x<8;x++){ctx.fillStyle=(x+y)%2?'#222':'#ddd';ctx.fillRect(x*128,y*128,128,128);ctx.fillStyle=(x+y)%2?'#fff':'#111';ctx.font='24px sans-serif';ctx.fillText(`${String.fromCharCode(65+y)}${x+1}`,x*128+20,y*128+65);}c.texture=new THREE.CanvasTexture(canvas);c.texture.flipY=false;c.texture.colorSpace=THREE.SRGBColorSpace;apply(c);$('name-'+c.id).textContent=c.label+' · grid';});transport();};
 $('play').onclick=()=>{status('');if(playing)pause();else{playing=true;transport();resumeVideos();}};
