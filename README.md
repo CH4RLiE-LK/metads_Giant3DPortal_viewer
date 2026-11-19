@@ -12,12 +12,12 @@ Do not upload only the ZIP itself. Files must be extracted in the repository.
 
 ## Controls
 
-- Front returns to the revised Blender camera's position and angle, with the requested 1.70 m eye height. Default FOV is 90 degrees so the portal fits in a desktop view; the selected FOV is retained when using Front. Height and FOV remain adjustable.
+- Front returns to the revised Blender camera's position and angle, with the requested 1.70 m eye height. Default FOV is 80 degrees; the selected FOV is retained when using Front. Height and FOV remain adjustable.
 - Desktop: drag to look, WASD or arrow keys to walk, wheel to move forward/backward, right-drag or Shift-drag to move. Front clearance extends to 35 m on the world Z axis.
 - Mobile: drag the left joystick to walk; drag elsewhere to look. Motion View appears on touch devices only and requests sensor permission when needed. Touch look remains available while motion is on. Motion requires HTTPS and a supported phone/browser.
 - Content expands to show five independent video/image inputs: Back, Left, Right, Ceiling, and Ceiling Front. Local replacements stay in your browser; they are not uploaded to a server.
 - Playback controls apply to all loaded videos. Frame buttons step by 1/30 second. Shorter replacement videos loop individually. Browser playback is approximately synchronized, not a frame-locked installation player.
-- Reset all videos restores the five included clips. Test grid replaces all five surfaces with a numbered UV grid. Movement stops in front of the screen entrance.
+- Reset all videos restores the five included clips. Test grid replaces all five surfaces with a numbered UV grid. You can walk through the entrance onto the base; movement stays within the base edges inside.
 
 ## Included media
 

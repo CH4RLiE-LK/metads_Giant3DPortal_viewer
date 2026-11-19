@@ -22,7 +22,13 @@ export class TunnelNavigation {
   move(forward,right){
     this.goal.x+=-Math.sin(this.yaw)*forward+Math.cos(this.yaw)*right;
     this.goal.z+=-Math.cos(this.yaw)*forward-Math.sin(this.yaw)*right;
-    this.goal.x=THREE.MathUtils.clamp(this.goal.x,-20,20);this.goal.z=THREE.MathUtils.clamp(this.goal.z,2.2,35);
+    this.goal.x=THREE.MathUtils.clamp(this.goal.x,-20,20);this.goal.z=THREE.MathUtils.clamp(this.goal.z,-2.4,35);
+    // The base runs from roughly z=-2.62 to 2.14 and x=-2.51 to 2.51.
+    // Keep a walking margin at its edges while allowing entry through the front.
+    if(this.goal.z<2.14){
+      if(Math.abs(this.camera.position.x)>2.28)this.goal.z=2.14;
+      else this.goal.x=THREE.MathUtils.clamp(this.goal.x,-2.28,2.28);
+    }
     // Avoid queued movement continuing long after scrolling stops.
     const delta=this.goal.clone().sub(this.camera.position);if(delta.length()>1.2)this.goal.copy(this.camera.position).add(delta.setLength(1.2));
   }
