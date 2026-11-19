@@ -8,7 +8,7 @@ const channels=definitions.map(([id,label,material])=>({id,label,material,meshes
 const status=text=>{$('status').textContent=text;$('status').hidden=!text;};
 const scene=new THREE.Scene();scene.background=new THREE.Color('#222');
 const renderer=new THREE.WebGLRenderer({antialias:true});renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));renderer.outputColorSpace=THREE.SRGBColorSpace;$('viewport').append(renderer.domElement);
-const camera=new THREE.PerspectiveCamera(90,1,.03,150),controls=new TunnelNavigation(camera,renderer.domElement);
+const camera=new THREE.PerspectiveCamera(80,1,.03,150),controls=new TunnelNavigation(camera,renderer.domElement);
 scene.add(new THREE.HemisphereLight(0xffffff,0x666666,2));const light=new THREE.DirectionalLight(0xffffff,3);light.position.set(4,8,6);scene.add(light);
 const ground=new THREE.GridHelper(80,160,0x444444,0x444444);ground.position.set(0,-.025,-.25);scene.add(ground);
 // GiantPortalCam from the supplied Blender file, converted from Z-up to Y-up.
